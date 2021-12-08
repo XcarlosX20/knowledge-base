@@ -48,6 +48,10 @@ const Layout = (props) => {
             h1,h2,h3,h4{
                 font-family: 'Fjalla One', 'Roboto';
             }
+            ul,li {
+                padding: 0;
+                margin: 0;
+            }
             p{
                 font-size: 1.6rem;
             }

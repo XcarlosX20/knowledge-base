@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { Box, Container, Typography, Modal, Grid } from '@mui/material';
+import { Box, Container, Typography, Modal } from '@mui/material';
 import { styled } from '@mui/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import styles from '../styles/CommunityForum.module.css';
 const CommunityForum = () => {
     const matches = useMediaQuery('(min-width:768px)');
     const Side = styled(Box)({
-        overflow: 'scroll',
-        height: '60vh',
+        height: '100%',
         padding: '0 30px',
         width: "100%",
     });
@@ -33,26 +32,43 @@ const CommunityForum = () => {
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
-                className="animate__animated animate__slideInRight box"
+                className={`${styles['container-forum']} animate__animated animate__slideInRight`}
             >
                 <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography>
+                    <Side overflow="scroll">
+                        <Typography variant="h3" mb={1} align="center">Community forum</Typography>
+                        <ul>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                        </ul>
+                    </Side>
                 </Box>
             </Modal>
             <Container>
                 {matches ? (
-                    <Grid container spacing={2}>
-                        <Grid item xs={8}>
-                            .container
-                        </Grid>
-                        <Grid item xs={4}>
+                    
                             <Side>
-                                <Typography noWrap zeroMinWidth variant="h3" mb={1} align="center">Community forum</Typography>
+                                <Typography variant="h3" mb={1} align="center">Community forum</Typography>
                                 <ul>
                                     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
                                     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
@@ -67,12 +83,10 @@ const CommunityForum = () => {
                                     <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
                                 </ul>
                             </Side>
-                        </Grid>
-                    </Grid>
-                ) : 
-                (<div onClick={handleOpen} className={styles.entry}>
-                community forum
-                </div>)}
+                ) :
+                    (<div onClick={handleOpen} className={styles.entry}>
+                        Community forums
+                    </div>)}
 
             </Container>
         </>
