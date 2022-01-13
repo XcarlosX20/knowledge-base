@@ -51,6 +51,7 @@ const Layout = (props) => {
             ul,li {
                 padding: 0;
                 margin: 0;
+                list-style: none;
             }
             p{
                 font-size: 1.6rem;

@@ -1,92 +1,69 @@
 import { useState } from 'react';
-import { Box, Container, Typography, Modal } from '@mui/material';
+import { Box, Container, Typography, Drawer, List, ListItem } from '@mui/material';
 import { styled } from '@mui/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import styles from '../styles/CommunityForum.module.css';
+//CREAR EL CONTEXT QUE conectara la api con el server
 const CommunityForum = () => {
     const matches = useMediaQuery('(min-width:768px)');
     const Side = styled(Box)({
         height: '100%',
-        padding: '0 30px',
+        padding: '0 10px',
         width: "100%",
-    });
-    //Forum from modal
-    const style = {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        height: 80 + 'vh',
-        width: 80 + 'vw',
-        bgcolor: '#FFFF',
-        boxShadow: 24,
-        p: 4
-    };
+    })
+    const forum = {
+        width: '75vw',
+        padding: '1rem',
+    }
+    //Forum from modal on mobile
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     return (
         <>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                className={`${styles['container-forum']} animate__animated animate__slideInRight`}
-            >
-                <Box sx={style}>
+           <Drawer
+           anchor='right'
+           open={open}
+           onClose={handleClose}>
+                <Box sx={forum}>
                     <Side overflow="scroll">
                         <Typography variant="h3" mb={1} align="center">Community forum</Typography>
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        </ul>
+                        <List>
+                            <ListItem disablePadding >Lorem ipsum dolor sit amet, consectetur adipiscing elit mobile.</ListItem>
+                            <ListItem disablePadding >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem disablePadding >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem disablePadding >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem disablePadding >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem disablePadding >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem disablePadding >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem disablePadding >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem disablePadding >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                        </List>
                     </Side>
                 </Box>
-            </Modal>
+            </Drawer>
             <Container>
-                {matches ? (
-                    
-                            <Side>
-                                <Typography variant="h3" mb={1} align="center">Community forum</Typography>
-                                <ul>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                </ul>
-                            </Side>
+                {matches? (
+
+                    <Side>
+                        <Typography variant="h3" mb={1} align="center">Community forum</Typography>
+                        <List>
+                            <ListItem >Lorem ipsum dolor sit amet, consectetur adipiscing .</ListItem>
+                            <ListItem >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                            <ListItem >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ListItem>
+                        </List>
+                    </Side>
                 ) :
-                    (<div onClick={handleOpen} className={styles.entry}>
-                        Community forums
-                    </div>)}
+                    (!open ? <div onClick={handleOpen} 
+                    className={`${styles.entry} box`}>
+                        Community forum
+                    </div>: null)}
 
             </Container>
         </>

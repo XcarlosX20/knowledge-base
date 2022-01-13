@@ -13,11 +13,9 @@
     background-color: var(--txt);
     writing-mode: vertical-lr; 
     transform: rotate(180deg);
+    border: 2px solid #d32f2f !important;
+    border-left: transparent !important;
 }
-.container-forum{
-    background-color: transparent !important;
-}
-
 @media (min-width:768px) {
     .entry{
         display: none;
